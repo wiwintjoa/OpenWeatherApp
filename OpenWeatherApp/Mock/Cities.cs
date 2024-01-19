@@ -15,7 +15,6 @@ namespace OpenWeatherApp.Mock
                 case "US":
                     cities = new List<SelectListItem>
                     {
-                        new SelectListItem() {Text = "", Value = ""},
                         new SelectListItem() {Text = "Chicago", Value = "Chicago"},
                         new SelectListItem() {Text = "Dallas", Value = "Dallas"},
                         new SelectListItem() {Text = "Denver", Value = "Denver"},
@@ -25,7 +24,6 @@ namespace OpenWeatherApp.Mock
                 case "INA":
                     cities = new List<SelectListItem>
                     {
-                        new SelectListItem() {Text = "", Value = ""},
                         new SelectListItem() {Text = "Bandung", Value = "Bandung"},
                         new SelectListItem() {Text = "Jakarta", Value = "Jakarta"},
                         new SelectListItem() {Text = "Medan", Value = "Medan"},
@@ -35,7 +33,6 @@ namespace OpenWeatherApp.Mock
                 case "BZ":
                     cities = new List<SelectListItem>
                     {
-                        new SelectListItem() {Text = "", Value = ""},
                         new SelectListItem() {Text = "Manaus", Value = "Manaus"},
                         new SelectListItem() {Text = "Recife", Value = "Recife"},
                         new SelectListItem() {Text = "Salvador", Value = "Salvador"},
@@ -45,7 +42,6 @@ namespace OpenWeatherApp.Mock
                 case "UK":
                     cities = new List<SelectListItem>
                     {
-                        new SelectListItem() {Text = "", Value = ""},
                         new SelectListItem() {Text = "London", Value = "London"},
                     };
                     break;
@@ -53,7 +49,6 @@ namespace OpenWeatherApp.Mock
                 case "SA":
                     cities = new List<SelectListItem>
                     {
-                        new SelectListItem() {Text = "", Value = ""},
                         new SelectListItem() {Text = "Pretoria", Value = "Pretoria"},
                         new SelectListItem() {Text = "Soweto", Value = "Soweto"},
 

@@ -42,7 +42,9 @@ namespace OpenWeather.Service
                     weatherDto.TemperatureC = ConvertToCelsius(weatherDto.Main.Temperature);
                     weatherDto.TemperatureF = ConvertToFahrenheit(weatherDto.TemperatureC);
                     weatherDto.CurrentDateTime = TimeStampToDateTime(weatherDto.Dt).ToString();
-                   
+                    weatherDto.TemperatureMinC = ConvertToCelsius(weatherDto.Main.TempMin);
+                    weatherDto.TemperatureMaxC = ConvertToCelsius(weatherDto.Main.TempMax);
+
                     response.Data = weatherDto;
 
                     return response;

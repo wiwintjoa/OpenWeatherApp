@@ -5,7 +5,8 @@
 
 @try
 {
-    <h2>Weather Info @Model.Data.Title</h2>
+    <h2>Weather Info - City: @Model.Data.Title</h2>
+    <h3>Time: @Model.Data.CurrentDateTime</h3>
     string weatherType = "";
     switch (Model.Data.Weather[0].Visibility.ToString())
     {
@@ -15,15 +16,19 @@
     }
 
     <table class="table table-sm table-striped table-bordered m-2">
-        <thead><tr><th>Weather</th><th>Temperature</th><th>Humidity</th><th>Perceived Temperature</th><th>Wind</th></tr></thead>
+        <thead><tr><th>Weather</th><th>Location</th><th>Temperature °C</th><th>Temperature °F</th><th>Visibility</th><th>Relative Humidity</th><th>Dew Point</th><th>Pressure</th><th>Wind</th></tr></thead>
         <tbody>
 
             <tr>
                 <td>@weatherType </td>
-                <td>@Model.Data.Main.Temperature °C</td>
+                <td>Lat: @Model.Data.Coord.Lat  -  Lon: @Model.Data.Coord.Lon</td>
+                <td>@Model.Data.TemperatureC °C</td>
+                <td>@Model.Data.TemperatureF °F</td>
+                <td>@Model.Data.Visibility</td>
                 <td>@Model.Data.Main.Humidity %</td>
-                <td>@Model.Data.Main.Percepita °C</td>
-                <td>@Model.Data.Wind.Speed Nodi</td>
+                <td>@Model.Data.TemperatureMinC °C/@Model.Data.TemperatureMaxC °C</td>
+                <td>@Model.Data.Main.Pressure</td>
+                <td>@Model.Data.Wind.Speed m/s</td>
             </tr>
 
 

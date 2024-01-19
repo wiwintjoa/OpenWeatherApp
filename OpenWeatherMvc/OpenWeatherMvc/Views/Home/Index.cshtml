@@ -39,18 +39,13 @@
             async: false,
             dataType: 'json',
             contentType: 'application/json',
-            headers: {
-                'Access-Control-Allow-Origin': '*',
-                'Access-Control-Allow-Methods': 'GET, POST, PATCH, PUT, DELETE, OPTIONS',
-                'Access-Control-Allow-Headers': 'Origin, Content-Type, X-Auth-Token'
-            },
-            success: function (d) {
-                $.each(d, function (i, country) {
-                    ddlCountry.append($("<option></option>").val(country.Code).html(country.Name));
+            success: function (data) {
+                $.each(data, function (i, country) {
+                    ddlCountry.append($("<option></option>").val(country.code).html(country.name));
                 });
             },
-            error: function () {
-                alert('Error!');
+            error: function (err) {
+                console.log(err);
             }
         });
 
@@ -62,7 +57,6 @@
             ddlCity.empty();
             ddlCity.append($("<option></option>").val('').html('Please wait ...'));
 
-            debugger;
             $.ajax({
                 url: 'https://localhost:44375/v1/Cities?countryCode=' + countryCode,
                 type: 'GET',
@@ -70,21 +64,16 @@
                 crossDomain: true,
                 async: false,
                 contentType: 'application/json',
-                headers: {
-                    'Access-Control-Allow-Origin': '*',
-                    'Access-Control-Allow-Methods': 'GET, POST, PATCH, PUT, DELETE, OPTIONS',
-                    'Access-Control-Allow-Headers': 'Origin, Content-Type, X-Auth-Token'
-                },
-                success: function (d) {
+                success: function (data) {
 
-                    ddlCity.empty(); // Clear the please wait
+                    ddlCity.empty();
                     ddlCity.append($("<option></option>").val('').html('Select City'));
-                    $.each(d, function (i, cities) {
-                        ddlState.append($("<option></option>").val(cities.Code).html(cities.Name));
+                    $.each(data, function (i, city) {
+                        ddlCity.append($("<option></option>").val(city.code).html(city.name));
                     });
                 },
                 error: function () {
-                    alert('Error!');
+                    console.log(err);
                 }
             });
         });
@@ -92,8 +81,10 @@
         $("#ddlCity").change(function () {
             var city = $(this).val();
 
-            window.location = "@Url.Action("WeatherView", "Home")" +
-                "/" + city;
+            var url = '@Url.Action("WeatherView", "Home", new { city = "__param__" })';
+            url = url.replace('__param__', encodeURIComponent(city));
+            debugger;
+            window.location = url;
         });
     </script>
 }

@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Components.Server.Circuits;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using OpenWeatherMvc.Models;
 using OpenWeatherMvc.Service;
@@ -30,8 +31,9 @@ namespace OpenWeatherMvc.Controllers
 
         public IActionResult WeatherView(string city)
         {
-            string apiResult = "https://localhost:44375/v1/OpenWeather?city=london";
+            string apiResult = "https://localhost:44375/v1/OpenWeather?city=" + city;
             WeatherApiData weatherApiModel = _restService.GetWeatherData(apiResult).Result;
+            weatherApiModel.Data.Title = city;
 
             return View(weatherApiModel);
         }

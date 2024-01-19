@@ -45,6 +45,10 @@ namespace OpenWeatherMvc.Models
         public double TemperatureC { get; set; }
 
         public double TemperatureF { get; set; }
+
+        public double TemperatureMinC { get; set; }
+
+        public double TemperatureMaxC { get; set; }
     }
 
     public class Clouds

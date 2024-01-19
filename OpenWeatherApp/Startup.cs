@@ -45,6 +45,16 @@ namespace OpenWeatherApp
                 options.OperationFilter<SwaggerDefaultValues>();
             });
 
+            services.AddCors(options =>
+            {
+                options.AddPolicy(name: "AllowAllOrigin",
+                    builder =>
+                    {
+                        builder.WithOrigins("http://localhost:3000", "https://localhost:44325").AllowAnyHeader().AllowAnyMethod();
+                    });
+            });
+
+
             Bootstrapper.SetupServices(services);
         }
 

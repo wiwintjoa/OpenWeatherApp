@@ -47,5 +47,9 @@ namespace OpenWeather.Core.Dto
         public double TemperatureC { get; set; }
 
         public double TemperatureF { get; set; }
+
+        public double TemperatureMinC { get; set; }
+
+        public double TemperatureMaxC { get; set; }
     }
 }
