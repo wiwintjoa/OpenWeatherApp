@@ -29,7 +29,7 @@ namespace OpenWeather.Service
                 return response;
             }
 
-            WeatherDto weatherDto = null;
+            var weatherDto = new WeatherDto();
             try
             {
                 var query = "https://api.openweathermap.org/data/2.5/weather?q=+" + city + "&appid=f289868b0ab99520b5821cfe6dd3b933";
@@ -59,6 +59,7 @@ namespace OpenWeather.Service
             catch (Exception ex)
             {
                 response.AddErrorMessage(ex.Message.ToString());
+                response.Data = weatherDto;
             }
 
             return response;

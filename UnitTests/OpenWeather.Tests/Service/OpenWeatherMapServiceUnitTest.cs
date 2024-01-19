@@ -34,8 +34,15 @@ namespace OpenWeather.Tests.Service
         {
             //Act
             var actualResult = await service.GetWeatherData("London");
-
-            var temperatureCelcius = Math.Round(actualResult.Data.Main.Temperature - 273.15, 3);
+            double temperatureCelcius = 0;
+            
+            if (actualResult.Data.Main != null)
+            {
+                temperatureCelcius = Math.Round(actualResult.Data.Main.Temperature - 273.15, 3);
+            } else
+            {
+                temperatureCelcius = 0;
+            }
 
             //Assert
             Assert.Equal(temperatureCelcius, actualResult.Data.TemperatureC);

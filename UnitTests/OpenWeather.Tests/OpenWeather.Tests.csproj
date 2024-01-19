@@ -25,4 +25,8 @@
     <ProjectReference Include="..\..\OpenWeatherApp\OpenWeatherApp.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Automation\" />
+  </ItemGroup>
+
 </Project>
