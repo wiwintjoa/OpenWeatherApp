@@ -15,16 +15,16 @@ Below are the API Documentation looks like:
 To run this application you will need to do below step:
 1. Run Web API project first which is OpenWeatherApp.
 2. Run OpenWeatherMvc project to see and iteract with the User Interface.
-3. After seeing the homepage, select the country from the list.
-4. Select the City
-5. As expected it will giev you weather information.
+3. After the homepage loaded, select the country from the list.
+4. Select the City.
+5. It will redirect you to the weather page, like below image sample.
 
 Below is the screenshoot of the Weather result:
-<img width="952" alt="image" src="https://github.com/wiwintjoa/OpenWeatherApp/assets/15260722/b62a8cdf-4e55-4bf5-aa3b-da2da6a51b7b">
-
+<img width="837" alt="image" src="https://github.com/wiwintjoa/OpenWeatherApp/assets/15260722/6da61814-b3c9-442d-bf06-e0fc3287150f">
 
 Please try it will be fun!
 
 Waiting for any feedback.
 
 Cheers!!
+Wiwin W.
