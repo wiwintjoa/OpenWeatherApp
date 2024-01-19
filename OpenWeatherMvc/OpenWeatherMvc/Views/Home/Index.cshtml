@@ -1,0 +1,99 @@
+﻿@{
+    ViewData["Title"] = "Open Weather Info";
+}
+
+<h1>Please select country and city to check the weather today!</h1>
+<hr />
+<br />
+<div class="row">
+    <div class="col-lg-3"></div>
+    <div class="col-lg-6">
+
+        <div class="form-group">
+            <label class="col-md-4 control-label">Country Name</label>
+            <div class="col-md-6">
+                <select class="form-control" id="ddlCountry"></select><br />
+            </div>
+        </div>
+        <br />
+        <div class="form-group">
+            <label class="col-md-4 control-label">City Name</label>
+            <div class="col-md-6">
+                <select class="form-control" id="ddlCity"></select>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-3"></div>
+</div>
+
+
+@section Scripts {
+    <script type="text/javascript">
+    
+        var ddlCountry = $('#ddlCountry');
+        ddlCountry.append($("<option></option>").val('').html('Please Select Country'));
+        $.ajax({
+            url: 'https://localhost:44375/v1/Countries',
+            type: 'GET',
+            crossDomain: true,
+            async: false,
+            dataType: 'json',
+            contentType: 'application/json',
+            headers: {
+                'Access-Control-Allow-Origin': '*',
+                'Access-Control-Allow-Methods': 'GET, POST, PATCH, PUT, DELETE, OPTIONS',
+                'Access-Control-Allow-Headers': 'Origin, Content-Type, X-Auth-Token'
+            },
+            success: function (d) {
+                $.each(d, function (i, country) {
+                    ddlCountry.append($("<option></option>").val(country.Code).html(country.Name));
+                });
+            },
+            error: function () {
+                alert('Error!');
+            }
+        });
+
+
+        $("#ddlCountry").change(function () {
+            var countryCode = $(this).val();
+
+            var ddlCity = $('#ddlCity');
+            ddlCity.empty();
+            ddlCity.append($("<option></option>").val('').html('Please wait ...'));
+
+            debugger;
+            $.ajax({
+                url: 'https://localhost:44375/v1/Cities?countryCode=' + countryCode,
+                type: 'GET',
+                dataType: 'json',
+                crossDomain: true,
+                async: false,
+                contentType: 'application/json',
+                headers: {
+                    'Access-Control-Allow-Origin': '*',
+                    'Access-Control-Allow-Methods': 'GET, POST, PATCH, PUT, DELETE, OPTIONS',
+                    'Access-Control-Allow-Headers': 'Origin, Content-Type, X-Auth-Token'
+                },
+                success: function (d) {
+
+                    ddlCity.empty(); // Clear the please wait
+                    ddlCity.append($("<option></option>").val('').html('Select City'));
+                    $.each(d, function (i, cities) {
+                        ddlState.append($("<option></option>").val(cities.Code).html(cities.Name));
+                    });
+                },
+                error: function () {
+                    alert('Error!');
+                }
+            });
+        });
+
+        $("#ddlCity").change(function () {
+            var city = $(this).val();
+
+            window.location = "@Url.Action("WeatherView", "Home")" +
+                "/" + city;
+        });
+    </script>
+}

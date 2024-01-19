@@ -1,0 +1,56 @@
+﻿@model WeatherApiData
+@{
+    Layout = "_Layout"; ViewBag.Title = "Weather";
+}
+
+@try
+{
+    <h2>Weather Info @Model.Data.Title</h2>
+    string weatherType = "";
+    switch (Model.Data.Weather[0].Visibility.ToString())
+    {
+        case "Rain": weatherType = "Rainy 🌧"; break;
+        case "Clear": weatherType = "Sunny! ☀"; break;
+        case "Clouds": weatherType = "Cloudy ⛅"; break;
+    }
+
+    <table class="table table-sm table-striped table-bordered m-2">
+        <thead><tr><th>Weather</th><th>Temperature</th><th>Humidity</th><th>Perceived Temperature</th><th>Wind</th></tr></thead>
+        <tbody>
+
+            <tr>
+                <td>@weatherType </td>
+                <td>@Model.Data.Main.Temperature °C</td>
+                <td>@Model.Data.Main.Humidity %</td>
+                <td>@Model.Data.Main.Percepita °C</td>
+                <td>@Model.Data.Wind.Speed Nodi</td>
+            </tr>
+
+
+        </tbody>
+    </table>
+    <br />
+    @* <a asp-action="" class="btn btn-sm btn-primary">Search Again!</a> *@
+    <br />
+    @switch (Model.Data.Weather[0].Visibility.ToString())
+    {
+        case "Clear":
+            <img src="~/Images/sunny.jpg" height="550" width="1120">
+            ; break;
+        case "Clouds":
+            <img src="~/Images/cloudy.jpg" height="550" width="1120">
+            ; break;
+        case "Rain":
+            <img src="~/Images/rainy.jpg" height="550" width="1120">
+            ; break;
+    }
+}
+catch
+{
+
+    <h1>The city is not available, please try other city.</h1>
+
+    <br />
+    <a asp-action="" class="btn btn-sm btn-primary">Try Again!</a>
+
+}
