@@ -19,6 +19,10 @@ To run this application you will need to do below step:
 4. Select the City
 5. As expected it will giev you weather information.
 
+Below is the screenshoot of the Weather result:
+<img width="952" alt="image" src="https://github.com/wiwintjoa/OpenWeatherApp/assets/15260722/b62a8cdf-4e55-4bf5-aa3b-da2da6a51b7b">
+
+
 Please try it will be fun!
 
 Waiting for any feedback.
